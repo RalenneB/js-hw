@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Hw1</title>
   </head>
   <body>
     <script>
@@ -51,18 +51,52 @@
 // 6.Create a currency converter. A user types in USD and the program converts them to EUR.
 // The exchange rate should be stored as a constant. ----something not right, add more decimals!
 
-let userDollars = prompt("Type in the amount of USD you want to convert in EUR")
+// let userDollars = prompt("Type in the amount of USD you want to convert in EUR")
 
-let exchangeRate = 0.8711;
+// let exchangeRate = 0.8711;
 
-let userEuros = exchangeRate * userDollars;
+// let userEuros = exchangeRate * userDollars;
 
-document.write("In EUR you would have " + userEuros )
+// document.write("In EUR you would have " + userEuros )
 
 
-// A user states a flash drive memory in GB. The program has to count how many 820MB files can be stored on this flash drive. 
-// A user types in an amount of money in a wallet and the price of one chocolate bar. The program counts how many chocolate bars the user can buy, and how much change will he/she have left. 
-// The user types in a sum of bank deposits for 2 months with a yearly interest rate of 5%. The program counts the sum of interest.
+// 7. A user states a flash drive memory in GB. The program has to count how many 820MB 
+//files can be stored on this flash drive. 
+
+// let sizeGigabytes = prompt("How many GB you need?");
+
+// let convertedSizeMegabytes = sizeGigabytes * 1024;
+
+// let counterStore = convertedSizeMegabytes / 820;
+
+// document.write("You can store " + counterStore + " times the 820MB in the flash drive.")
+
+
+// 8. A user types in an amount of money in a wallet and the price of one chocolate bar.
+// The program counts how many chocolate bars the user can buy, and how much change will 
+//he/she have left. 
+
+// let money = prompt("How much money do you have?");
+// let chocolateBar = prompt("What is the price of the chocolate bar?");
+
+// let chocolateToBuy = Math.floor(money/chocolateBar);
+// let change = money - (chocolateToBuy*chocolateBar);
+
+// document.write("You can buy " + chocolateToBuy + " chocolate bars " + "and you have left " + change + " EUR.")
+
+
+
+// 9. The user types in a sum of bank deposits for 2 months with a yearly interest rate of 5%.
+// The program counts the sum of interest.
+
+let sumDeposit = prompt("Type in the sum of bank deposit in EUR")
+
+let yearlyInterest = sumDeposit * 0.05;
+
+let monthlyInterest = yearlyInterest/12;
+
+document.write("The sum of interest in one year is: " + yearlyInterest + " EUR, and the monthly interest is " + monthlyInterest + " EUR.")
+
     </script>
   </body>
 </html>
