@@ -1,4 +1,6 @@
-userInput = prompt('Choose the number that is corresponding to the code you want to run:');
+userInput = prompt(
+  "Choose the number that is corresponding to the code you want to run:"
+);
 
 /* \n \n \
  1. Write a program that requests a number from a user and finds the summation \
@@ -28,30 +30,26 @@ multiplied by 1 to 10. \n \n \
     until the user chooses == N. ' */
 
 function wrapper(userInput) {
-    if (parseInt(userInput) == 1) {
-        //gauss formula
-        noInput = prompt('Enter a number.');
-        return summationofNos(parseInt(noInput));
-    }
-
-    else if (parseInt(userInput) ==2) {
-        noInput2 = prompt('Enter the first number.');
-        noInput3 = prompt('Enter the second number.');
-        return greatestDivisor(parseInt(noInput2), parseInt(noInput3));
-    }
-
-    else if (parseInt(userInput) == 3) {
-        //gauss formula
-        noInput = prompt('Enter a number.');
-        return getDivisors(parseInt(noInput));
-    }
-
-
-    else {
-        return 'Sorry, your number is not in 1 to 10 range, try again';
-    }
-
-
+  if (parseInt(userInput) == 1) {
+    //gauss formula
+    noInput = prompt("Enter a number.");
+    return summationofNos(parseInt(noInput));
+  } else if (parseInt(userInput) == 2) {
+    noInput2 = prompt("Enter the first number.");
+    noInput3 = prompt("Enter the second number.");
+    return greatestDivisor(parseInt(noInput2), parseInt(noInput3));
+  } else if (parseInt(userInput) == 3) {
+    noInput = prompt("Enter a number.");
+    return getDivisors2(parseInt(noInput));
+  } else if (parseInt(userInput) == 4) {
+    noInput = prompt("Enter a number with multiple digits.");
+    return numberOfDigits(noInput);
+  } else if (parseInt(userInput) == 5) {
+    noInput = prompt("Enter ten numbers separated by comma.");
+    return lotsOfNo(noInput);
+  } else {
+    return "Sorry, your number is not in 1 to 10 range, try again";
+  }
 }
 
 console.log(wrapper(userInput));
@@ -59,25 +57,56 @@ console.log(wrapper(userInput));
 // each function from the exercise
 
 function summationofNos(no) {
-    return (no * (no + 1)) / 2;
+  return (no * (no + 1)) / 2;
 }
 
-function greatestDivisor (a, b) {
-    // euclidean algorithm + recursive function usage
-    if (!b) {
-        return a;
-      }
-      return greatestDivisor(b, a % b);
-    }
+function greatestDivisor(a, b) {
+  // euclidean algorithm + recursive function usage
+  if (!b) {
+    return a;
+  }
+  return greatestDivisor(b, a % b);
+}
 
-function getDivisors(n){
+function getDivisors(n) {
+  let divisors = [...Array(n + 1).keys()].filter((div) => {
+    return div !== 0 && div !== 1 && n % div === 0;
+  });
+  // console.log(divisors);
+  //   divisors.push(n); // i think it's in place, no need for a second var
+  // console.log (divisorsComplete);
+  // console.log(typeof(divisors));
 
-    let divisors = [];
-    for (let i = 2; i < n; i ++) {
-        if (n % i === 0){
-            divisors.push(i)
-        }
+  return divisors.length > 1 ? divisors : `${n} is a prime number`;
+  // console.log(getDivisors(8));
+}
+// simpler, compatible the logic with low level languages too;
+function getDivisors2(n) {
+  let divisors = [];
+  for (let i = 2; i <= n; i++) {
+    if (n % i == 0) {
+      divisors.push(i);
     }
-    return divisors.length > 1 ? divisors : `${n} is a prime number`;
-    
+  }
+  return divisors.length > 1 ? divisors : `${n} is a prime number`;
+}
+
+function numberOfDigits(n) {
+  return n.length;
+}
+function lotsOfNo(stringOfNumbers) {
+    console.log(stringOfNumbers);
+    const arrayOfNumbers = stringOfNumbers.split(',')
+        .map((stringOfNumber) => {
+            return parseInt(stringOfNumber);
+        });
+    console.log(arrayOfNumbers);
+    let nToArray = [];
+    let superArray = [];
+    for (let i = 0; i <= stringOfNumbers.length; i++) {
+        nToArray.push(i);
+        superArray.push(nToArray.slice(0));
+        console.log(superArray);
+        return superArray;
+    }
 }

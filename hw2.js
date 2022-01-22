@@ -75,18 +75,12 @@ of a new month, new year, and also leap years.
 //5.
 
 
-let userDate = new Date();
-debugger;
+
 let userDate = prompt("Type in a date (format yyyy-mm-dd).")
 
 let convertedDate = new Date(userDate);
 
-convertedDate.setDate(convertedDate.getDate() + 1);
+convertedDate.setDate(convertedDate.getDate() + 1); // in place function!
 
 console.log("The next day after your chosen date is: " + convertedDate);
-
-
-
-
-
 

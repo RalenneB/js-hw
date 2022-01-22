@@ -33,3 +33,22 @@ function animal(obj){
     return "This " + obj.color + " " + obj.name  + " " + "has " + obj.legs + " legs."
   }
   
+
+  const obj = {name:"dog",legs:4,color:"white"};
+
+
+function smth (val) {
+
+    if (!val) {
+        return "false";
+    }
+     return "true";
+   
+}
+
+smth(12); // true
+smth([]); // true
+smth('asdf'); // true
+smth(0); // false
+smth(NaN); // false
+smth(10 > 3 && 10 < 20); // true
