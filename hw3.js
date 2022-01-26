@@ -1,5 +1,5 @@
 userInput = prompt(
-    "Choose the number that is corresponding to the code you want to run:"
+  "Choose the number that is corresponding to the code you want to run:"
 );
 
 /* \n \n \
@@ -30,43 +30,44 @@ multiplied by 1 to 10. \n \n \
     until the user chooses == N. ' */
 
 function wrapper(userInput) {
-    if (parseInt(userInput) == 1) {
-        //gauss formula
-        noInput = prompt("Enter a number.");
-        return summationofNos(parseInt(noInput));
-    } else if (parseInt(userInput) == 2) {
-        noInput2 = prompt("Enter the first number.");
-        noInput3 = prompt("Enter the second number.");
-        return greatestDivisor(parseInt(noInput2), parseInt(noInput3));
-    } else if (parseInt(userInput) == 3) {
-        noInput = prompt("Enter a number.");
-        return getDivisors2(parseInt(noInput));
-
-    } else if (parseInt(userInput) == 4) {
-        noInput = prompt("Enter a number with multiple digits.");
-        return numberOfDigits(noInput);
-
-    } else if (parseInt(userInput) == 5) {
-        noInput = prompt("Enter ten numbers separated by comma.");
-        return lotsOfNo(noInput);
-    } else if (parseInt(userInput) == 6) {
-        let result = true;
-        while (result) {
-            noInput = prompt("Enter 2 numbers and an operation symbol, separated by comma.");
-            result = loopCalc(noInput);
-        }
-        
-        return;
-    }
-    else if (parseInt(userInput) == 7) {
-        noInput = prompt('Enter a number with multiple digits.');
-        noInput2 = prompt('By how many digits to move it? (ex, 1,2,3 etc)');
-        return digitMover(noInput, noInput2);
+  if (parseInt(userInput) == 1) {
+    //gauss formula
+    noInput = prompt("Enter a number.");
+    return summationofNos(parseInt(noInput));
+  } else if (parseInt(userInput) == 2) {
+    noInput2 = prompt("Enter the first number.");
+    noInput3 = prompt("Enter the second number.");
+    return greatestDivisor(parseInt(noInput2), parseInt(noInput3));
+  } else if (parseInt(userInput) == 3) {
+    noInput = prompt("Enter a number.");
+    return getDivisors2(parseInt(noInput));
+  } else if (parseInt(userInput) == 4) {
+    noInput = prompt("Enter a number with multiple digits.");
+    return numberOfDigits(noInput);
+  } else if (parseInt(userInput) == 5) {
+    noInput = prompt("Enter ten numbers separated by comma.");
+    return lotsOfNo(noInput);
+  } else if (parseInt(userInput) == 6) {
+    let result = true;
+    while (result) {
+      noInput = prompt(
+        "Enter 2 numbers and an operation symbol, separated by comma."
+      );
+      result = loopCalc(noInput);
     }
 
-    else {
-        return "Sorry, your number is not in 1 to 10 range, try again";
-    }
+    return;
+  } else if (parseInt(userInput) == 7) {
+    noInput = prompt("Enter a number with multiple digits.");
+    noInput2 = prompt("By how many digits to move it? (ex, 1,2,3 etc)");
+    return digitMover(noInput, noInput2);
+  } else if (parseInt(userInput) == 8) {
+    return dayWeek();
+  } else if (parseInt(userInput) == 9) {
+    return multipTable();
+  } else {
+    return "Sorry, your number is not in 1 to 10 range, try again";
+  }
 }
 
 console.log(wrapper(userInput));
@@ -74,151 +75,188 @@ console.log(wrapper(userInput));
 // each function from the exercise
 
 function summationofNos(no) {
-    return (no * (no + 1)) / 2;
+  return (no * (no + 1)) / 2;
 }
 
 function greatestDivisor(a, b) {
-    // euclidean algorithm + recursive function usage
-    if (!b) {
-        return a;
-    }
-    return greatestDivisor(b, a % b);
+  // euclidean algorithm + recursive function usage
+  if (!b) {
+    return a;
+  }
+  return greatestDivisor(b, a % b);
 }
 
 function getDivisors(n) {
-    let divisors = [...Array(n + 1).keys()].filter((div) => {
-        return div !== 0 && div !== 1 && n % div === 0;
-    });
-    // console.log(divisors);
-    //   divisors.push(n); // i think it's in place, no need for a second var
-    // console.log (divisorsComplete);
-    // console.log(typeof(divisors));
+  let divisors = [...Array(n + 1).keys()].filter((div) => {
+    return div !== 0 && div !== 1 && n % div === 0;
+  });
+  // console.log(divisors);
+  //   divisors.push(n); // i think it's in place, no need for a second var
+  // console.log (divisorsComplete);
+  // console.log(typeof(divisors));
 
-    return divisors.length > 1 ? divisors : `${n} is a prime number`;
-    // console.log(getDivisors(8));
+  return divisors.length > 1 ? divisors : `${n} is a prime number`;
+  // console.log(getDivisors(8));
 }
 // simpler, compatible the logic with low level languages too;
 function getDivisors2(n) {
-    let divisors = [];
-    for (let i = 2; i <= n; i++) {
-        if (n % i == 0) {
-            divisors.push(i);
-        }
+  let divisors = [];
+  for (let i = 2; i <= n; i++) {
+    if (n % i == 0) {
+      divisors.push(i);
     }
-    return divisors.length > 1 ? divisors : `${n} is a prime number`;
+  }
+  return divisors.length > 1 ? divisors : `${n} is a prime number`;
 }
 
 function numberOfDigits(n) {
-    return n.length;
+  return n.length;
 }
 function lotsOfNo(stringOfNumbers) {
-
-    /* 5. Request 10 numbers from a user and count, how many are positive, negative, or zero. Also,\
+  /* 5. Request 10 numbers from a user and count, how many are positive, negative, or zero. Also,\
    count odd and even. Display the statistics. There’s only one variable (not 10) needed for \
    input by a user. \n \n\
     */
-    const arrayOfNumbers = stringOfNumbers.split(',').map((stringOfNumber) => parseInt(stringOfNumber));
-    let positiveCount = 0;
-    let negativeCount = 0;
-    let zeroCount = 0;
-    let evenNo = 0;
-    let oddNo = 0;
-    for (const currNumber of arrayOfNumbers) {
-        if (currNumber > 0) {
-            positiveCount++;
-            console.log(positiveCount);
-        }
-        else if (currNumber == 0) {
-            zeroCount++;
-            console.log(zeroCount);
-        }
-        else {
-            negativeCount++;
-            console.log(negativeCount);
-        }
-
-        if (currNumber % 2 == 0) {
-            evenNo++;
-            console.log(evenNo);
-        }
-        else {
-            oddNo++;
-            console.log(oddNo);
-        }
-
-
+  const arrayOfNumbers = stringOfNumbers
+    .split(",")
+    .map((stringOfNumber) => parseInt(stringOfNumber));
+  let positiveCount = 0;
+  let negativeCount = 0;
+  let zeroCount = 0;
+  let evenNo = 0;
+  let oddNo = 0;
+  for (const currNumber of arrayOfNumbers) {
+    if (currNumber > 0) {
+      positiveCount++;
+      console.log(positiveCount);
+    } else if (currNumber == 0) {
+      zeroCount++;
+      console.log(zeroCount);
+    } else {
+      negativeCount++;
+      console.log(negativeCount);
     }
 
-    return 'There are: ' + positiveCount + ' positive numbers, ' + zeroCount + ' zero numbers ' + negativeCount + ' negative numbers, ' + oddNo + ' odd numbers ' + evenNo + ' even numbers.'
+    if (currNumber % 2 == 0) {
+      evenNo++;
+      console.log(evenNo);
+    } else {
+      oddNo++;
+      console.log(oddNo);
+    }
+  }
+
+  return (
+    "There are: " +
+    positiveCount +
+    " positive numbers, " +
+    zeroCount +
+    " zero numbers " +
+    negativeCount +
+    " negative numbers, " +
+    oddNo +
+    " odd numbers " +
+    evenNo +
+    " even numbers."
+  );
 }
 
 /*6. Loop a calculator. Request 2 numbers and a sign, solve the problem, display the result and \
 ask if the user wants one more. The loop continues until the user refuses. \ */
 
 function loopCalc(stringOfNumbersAndSymbol) {
+  let arrayInput = stringOfNumbersAndSymbol.split(",");
+  console.log(arrayInput);
+  let symbolOp = arrayInput.pop();
+  console.log(symbolOp);
 
-    let arrayInput = stringOfNumbersAndSymbol.split(',');
-    console.log(arrayInput);
-    let symbolOp = arrayInput.pop();
-    console.log(symbolOp);
+  //remove last symbol from a string
 
-    //remove last symbol from a string
+  const arrayNo = arrayInput.map((arrayInput) => parseInt(arrayInput));
 
-    const arrayNo = arrayInput.map((arrayInput) => parseInt(arrayInput));
+  console.log(arrayNo);
 
-    console.log(arrayNo);
+  a = arrayNo[0];
+  console.log(a);
 
-    a = arrayNo[0];
-    console.log(a);
+  b = arrayNo[1];
+  console.log(b);
 
-    b = arrayNo[1];
-    console.log(b);
+  if (symbolOp == "+") {
+    return confirm("Your result is: " + (a + b) + " Wanna try again?");
+  } else if (symbolOp == "-") {
+    return confirm("Your result is: " + (a - b) + " Wanna try again?");
+  } else if (symbolOp == "*") {
+    return confirm("Your result is: " + a * b + " Wanna try again?");
+  } else if (symbolOp == "**") {
+    return confirm("Your result is: " + a ** b + " Wanna try again?");
+  } else if (symbolOp == "/") {
+    return confirm("Your result is: " + a / b + " Wanna try again?");
+  } else if (symbolOp == "%") {
+    return confirm("Your result is: " + (a % b) + " Wanna try again?");
+  } else {
+    return "Not an option!";
+  }
 
-    if (symbolOp == '+') {
-        return confirm('Your result is: ' + (a + b) + ' Wanna try again?');
-    }
-
-    else if (symbolOp == '-') {
-        return confirm('Your result is: ' + (a - b) + ' Wanna try again?');
-    }
-
-    else if (symbolOp == '*') {
-        return confirm('Your result is: ' + (a * b) + ' Wanna try again?');
-    }
-
-    else if (symbolOp == '**') {
-        return confirm('Your result is: ' + (a ** b) + ' Wanna try again?');
-    }
-
-    else if (symbolOp == '/') {
-        return confirm('Your result is: ' + (a / b) + ' Wanna try again?');
-    }
-
-    else if (symbolOp == '%') {
-        return confirm('Your result is: ' + (a % b) + ' Wanna try again?');
-    }
-
-    else {
-        return 'Not an option!'
-    };
+  // console.log(stringOfNumbers);
+  // const arrayOfNumbers = stringOfNumbers.split(',')
+  //     .map((stringOfNumber) => {
+  //         return parseInt(stringOfNumber);
+  //     });
+  // console.log(arrayOfNumbers);
 }
-
 
 /* 7. Request a number from a user and ask by how many digits to move it. Move the digits and\
  display the result (if the number 123456 needs to be moved by 2 digits, the result will be\
      345612).*/
 function digitMover(string1, string2) {
-    noOfDigits = parseInt(string2);
-    let newStr1 = '';
-    let newStr2 = '';
+  noOfDigits = parseInt(string2);
+  let newStr1 = "";
+  let newStr2 = "";
 
-    for (i = 0; i < string1.length; i++) {
-        if (i < noOfDigits) {
-            newStr1 += string1[i];
-        } else {
-            newStr2 += string1[i];
-        }
+  for (i = 0; i < string1.length; i++) {
+    if (i < noOfDigits) {
+      newStr1 += string1[i];
+    } else {
+      newStr2 += string1[i];
     }
+  }
 
-    return newStr2 + newStr1;
+  return newStr2 + newStr1;
+}
+
+/* 8. Loop day input like this: «Day of the week. Would you like to see the next one?» which\
+ continues as long as the user clicks OK.\ */
+function dayWeek() {
+  let ourDate = new Date();
+
+  let currDate = ourDate.toLocaleString("en-us", { weekday: "long" });
+  let nextDay = confirm('Current day is: ' + currDate + ". Would you like to see the next one?");
+
+  while (nextDay) {
+    const currTimeMil = ourDate.getTime();
+    const nextDayMil = currTimeMil + 8.64e7;
+    ourDate = new Date(nextDayMil);
+    const nextDayName = ourDate.toLocaleString("en-us", { weekday: "long" });
+
+    nextDay = confirm(
+      'Next day is: ' + nextDayName + '. Would you like to see the next one?'
+    );
+  }
+}
+
+/* 9. Display the multiplication table of all numbers from 2 to 9. Every number has to be \
+multiplied by 1 to 10. \n \n \*/
+function multipTable() {
+    // for 2: multip table
+const arrayOfNo = [1,2,3,4,5,6,7,8,9,10];
+const arrayFromTwoToNine = [2,3,4,5,6,7,8,9];
+
+multipTableRes = [];
+for (let i = 0; i < arrayOfNo.length; i++) {
+    multipTableRes[i] = arrayFromTwoToNine[i] * arrayOfNo[i];
+}
+
+console.log(multipTableRes);
+
 }
