@@ -248,15 +248,45 @@ function dayWeek() {
 /* 9. Display the multiplication table of all numbers from 2 to 9. Every number has to be \
 multiplied by 1 to 10. \n \n \*/
 function multipTable() {
-    // for 2: multip table
-const arrayOfNo = [1,2,3,4,5,6,7,8,9,10];
-const arrayFromTwoToNine = [2,3,4,5,6,7,8,9];
 
-multipTableRes = [];
-for (let i = 0; i < arrayOfNo.length; i++) {
-    multipTableRes[i] = arrayFromTwoToNine[i] * arrayOfNo[i];
+    let with2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(function (i) { return i * 2 });
+    let with3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(function (i) { return i * 3 });
+    let with4 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(function (i) { return i * 4 });
+    let with5 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(function (i) { return i * 5 });
+    let with6 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(function (i) { return i * 6 });
+    let with7 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(function (i) { return i * 7 });
+    let with8 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(function (i) { return i * 8 });
+    let with9 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(function (i) { return i * 9 });
+
+
+    console.log(`Multiplication with 2: ${with2}  
+    Multiplication with 3: ${with3}    
+    Multiplication with 4: ${with4}  
+    Multiplication with 5: ${with5}  
+    Multiplication with 6: ${with6}  
+    Multiplication with 7: ${with7}  
+    Multiplication with 8: ${with8}  
+    Multiplication with 9: ${with9} `)
 }
 
-console.log(multipTableRes);
-
+function multipTable2() {
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    for (let i = 2; i <= 9; i++) {
+        const result = numbers.map((x) => x * i);
+        console.log(`Multiplication with ${i}: ${result}`);
+    }
 }
+
+function multipTable3() {
+    for (let i = 2; i <= 9; i++) {
+        const result = [];
+        for (let j = 1; j <= 10; j++) {
+            result.push(j * i);
+        }
+        console.log(`Multiplication with ${i}: ${result}`);
+    }
+}
+
+// function multiplyNumbersByFactor(numbers, factor) {
+//     return numbers.map(function (i) { return i * factor });
+// }
