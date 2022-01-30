@@ -65,7 +65,11 @@ function wrapper(userInput) {
     return dayWeek();
   } else if (parseInt(userInput) == 9) {
     return multipTable();
-  } else {
+  } else if (parseInt(userInput) == 10) {
+    userInput = alert('Think of a number between 1 and 100.')
+    return gusssingGame();
+  }
+  else {
     return "Sorry, your number is not in 1 to 10 range, try again";
   }
 }
@@ -290,3 +294,39 @@ function multipTable3() {
 // function multiplyNumbersByFactor(numbers, factor) {
 //     return numbers.map(function (i) { return i * factor });
 // }
+
+//10. “Guess the number” game. Suggest a user to think of a number from 0 to 100 and guess it\
+// in the following way: every loop iteration needs to divide the range of numbers in half, \
+// you represent the result as N and ask the user “Your number > N, < N or == N?” Depending \ on what the user said, narrow down the range. So the starting range is 0 to 100, divided in\
+// half is 50. If the user said the number is > 50, the next range is 51 to 100, and so on,\
+//until the user chooses == N. ' */
+
+function gusssingGame () {
+
+let low = 0;
+
+let upper = 100;
+
+let half = upper/2;
+
+
+while (true) {
+  let input = prompt(`Your number > ${half}, < ${half} or = ${half} ? \
+    \n Type in the corresponding symbol (<, >, =)`);
+    if (input == '>') {
+      low = half + 1;
+      half = Math.floor((low+upper)/2);
+    }
+    else if (input == '<') {
+      upper = half - 1;
+      half = Math.floor((low+upper)/2);
+    }
+
+    else {
+      alert(`Yay, your number is ${half} !`)
+      break;
+    }
+}
+
+
+}
