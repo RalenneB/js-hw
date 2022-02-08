@@ -6,6 +6,7 @@
 
 A method that displays the car info 
 A method for counting a time frame necessary to cover a given distance with the average speed. Note that every 4 hours the driver has to take a 1-hour break.
+
 2. Create an object that contains separately the numerator and the denominator of a fraction, and the following functions for working with this object:
 
 A function for adding two fraction objects.
@@ -33,17 +34,17 @@ const car = {
       year of Release: ${this.yearOfRelease} and
       average speed is: ${this.averageSpeed}`;
   },
-  countTimeFrame: function(distance) {
+  countTimeFrame: function (distance) {
     let driveTime = distance / this.averageSpeed;
     let sleepTime = 0;
     for (let i = 5; i <= Math.ceil(driveTime); i += 4) {
       sleepTime++;
     }
     return driveTime + sleepTime;
-  }
+  },
 };
 
-function displayCarInfo(car) {
+function displayCarInfo2(car) {
   return `The manufacturer is: ${car.manufacturer}, 
     model: ${car.model}
     year of Release: ${car.yearOfRelease} and
@@ -99,3 +100,77 @@ countTimeFrame3 = (averageSpeed, distance) =>
       ? Math.ceil(distance / averageSpeed) / 4 - 1
       : 0
     : Math.floor(distance / averageSpeed / 4));
+
+/*2. Create an object that contains separately the numerator and the denominator of a fraction, and the following functions for working with this object:
+
+A function for adding two fraction objects.
+A function for subtracting two fraction objects.
+A function for multiplying two fraction objects.
+A function for dividing two fraction objects.
+A function for simplifying a fraction object.  
+ */
+
+//create common context in global scope
+
+//greatest common divisor
+function gcd(a, b) {
+  if (!b) {
+    return a;
+  }
+  return gcd(b, a % b);
+}
+
+//lowest/simplest fraction form
+function lowest(den3, num3) {
+  let common_factor = gcd(num3, den3);
+  // Converting both terms
+  // into simpler terms by
+  // dividing them by common factor
+  den3 = parseInt(den3 / common_factor);
+  num3 = parseInt(num3 / common_factor);
+  return { num3, den3 };
+}
+
+const funcObj = {
+  num1: 5,
+  den1: 10,
+  add: function (num2, den2) {
+    let den3 = gcd(this.den1, den2);
+    den3 = (this.den1 * den2) / den3;
+    let num3 = this.num1 * (den3 / this.den1) + num2 * (den3 / den2);
+    return this.simplif(den3, num3);
+  },
+
+  substract: function (num2, den2) {
+    let den3 = gcd(this.den1, den2);
+    den3 = (this.den1 * den2) / den3;
+    let num3 = this.num1 * (den3 / this.den1) - num2 * (den3 / den2);
+    return this.simplif(den3, num3);
+  },
+
+  multip: function (num2, den2) {
+    let den3 = this.den1 * den2;
+    let num3 = this.num1 * num2;
+    return this.simplif(den3, num3);
+  },
+
+  divide: function (num2, den2) {
+    //flip the numbers for the second fraction;
+
+    let den3 = this.den1 * num2;
+    let num3 = this.num1 * den2;
+    return this.simplif(den3, num3);
+  },
+
+  simplif: function (num3, den3) {
+    let common_factor = gcd(num3, den3);
+    // Converting both terms
+    // into simpler terms by
+    // dividing them by common factor
+    den3 = parseInt(den3 / common_factor);
+    num3 = parseInt(num3 / common_factor);
+    return { num3, den3 };
+  },
+};
+
+funcObj.add();
