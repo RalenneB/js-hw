@@ -174,3 +174,46 @@ const funcObj = {
 };
 
 funcObj.add();
+
+
+/*3. Create an object that describes time (hours, minutes, seconds), and the following methods for working with this object: 
+
+A method for displaying the time. 
+A method for changing the time by a given amount of seconds. 
+A method for changing the time by a given amount of minutes.  
+A method for changing the time by a given amount of hours. 
+Note that in the last three methods changing one part may influence another. For example, if we add 30 seconds to «20:30:45», we should get «20:31:15», not «20:30:75». */
+
+const timeDescriptor = {
+    hours: 00,
+    minutes: 00,
+    seconds: 00,
+
+    displayTime: function () {
+        date = new Date();
+        return date;
+    },
+
+    changeTimeSeconds: function(secondsGiven) {
+        date = new Date();
+        secondRes = date.setSeconds(date.getSeconds() + secondsGiven);
+        result = new Date(secondRes);
+        return result;
+    },
+
+    changeTimeMinutes: function(minutesGiven) {
+        date = new Date();
+        minutesRes = date.setMinutes(date.getMinutes() + minutesGiven);
+        result = new Date(minutesRes);
+        return result.toLocaleTimeString(); 
+        //if we want a truncated result, not the whole date
+    },
+
+    changeTimeHours: function(hoursGiven) {
+        date = new Date();
+        hoursRes = date.setHours(date.getHours() + hoursGiven);
+        result = new Date(hoursRes);
+        return result;
+    },
+
+}
