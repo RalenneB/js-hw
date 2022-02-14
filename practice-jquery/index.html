@@ -1,0 +1,34 @@
+<html>
+  <head> </head>
+  <body>
+    <!-- <iframe src="http://techcrunch.com"></iframe>
+    <p>bla bla</p>
+    <p>bla bla</p>
+    <p>bla bla</p>
+    <div class="funtimes">lalalalauci</div>
+    <p>bla bla</p>
+    <p>bla bla</p> -->
+    <p class="error">This is initially hidden, then slowly revealed.</p>
+    <p>This is not hidden</p>
+    <p>This is not bla bla</p>
+    <div>bla ex</div>
+    <div class="intro">bla1</div>
+    <div>bla ex</div>
+    <div>bla</div>
+    <div class="intro">bla2</div>
+
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script>
+    //   $("div").height(150)
+      $("p.error").hide();
+      //   $("div").hide();
+      $("p.error").show("slow");
+      $("p").css("color", "red");
+      $( "div" ).eq( 0 ).css( "background-color", "red" );
+
+    //   $("div.intro").hide();
+
+      //or $("p.error").hide().show("slow");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Homeworks</title>
+  </head>
+  <body>
+    <script src="hw8.js"></script>
+    <!-- for hw8, part 1-->
+    <div class="container">
+      <ol id="list"></ol>
+      <button class="button btn-info" id="btn" onclick="createListOfTracks()">
+        Show tracks
+      </button>
+    </div>
+
+    <!-- for hw8, part 2, w3schools logic-->
+    <div class="container">
+      <h3>Modal box</h3>
+      <!-- Trigger the modal with a button -->
+      <button
+        type="button"
+        class="btn btn-info btn-lg"
+        data-toggle="modal"
+        data-target="#myModal"
+      >
+        Open Modal
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">
+                &times;
+              </button>
+              <h4 class="modal-title">Cute Modal Header</h4>
+            </div>
+            <div class="modal-body">
+              <p>Random ralucian text, heehee.</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- for hw8, part 3-->
+    <br>
+    <div class="container">
+        <button class="btn-primary" id="first" onclick="changeButtonColor()">1</button>
+        <button class="btn-primary" id="second" onclick="changeButtonColor()">2</button>
+        <button class="btn-primary" id="third" onclick="changeButtonColor()">3</button>
+
+    </div>
+
+    <!-- for hw8, part 3 right way-->
+    <br>
+    <div class="container">
+        <button id="one">One</button>
+        <button id="two">Two</button>
+        <button id="three">Three</button>
+        <button id="switch" onclick="switchColor()">SWITCH! </button>
+    </div>
+  </body>
+</html>
