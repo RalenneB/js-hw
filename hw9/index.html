@@ -1,18 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Event Homework</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <!-- <div id="div" onclick="addDiv()">Change the text from here...</div> -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- First exercise... -->
     <div id="div">Change the text from here...</div>
 
+    <!-- Second exercise as on w3schools...-->
 
-    <script src="script.js">
-    </script>
-</body>
+    <p><strong>Click the headers to sort the table.</strong></p>
+    <p>
+      The first time you click, the sorting direction is ascending (A to Z),
+      then it is descending (Z to A).
+    </p>
+
+    <table id="myTable">
+      <tr>
+        <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->
+        <th onclick="sortTable(0)">Name</th>
+        <th onclick="sortTable(1)">Country</th>
+      </tr>
+      <tr>
+        <td>Berglunds snabbkop</td>
+        <td>Sweden</td>
+      </tr>
+      <tr>
+        <td>North/South</td>
+        <td>UK</td>
+      </tr>
+      <tr>
+        <td>Alfreds Futterkiste</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <td>Koniglich Essen</td>
+        <td>Germany</td>
+      </tr>
+      <tr>
+        <td>Magazzini Alimentari Riuniti</td>
+        <td>Italy</td>
+      </tr>
+      <tr>
+        <td>Paris specialites</td>
+        <td>France</td>
+      </tr>
+      <tr>
+        <td>Island Trading</td>
+        <td>UK</td>
+      </tr>
+      <tr>
+        <td>Laughing Bacchus Winecellars</td>
+        <td>Canada</td>
+      </tr>
+    </table>
+
+    <!-- Third exercise as on http://jsfiddle.net/zsafghcn/1 -->
+
+    <p id="p">Click to make me resizable</p>
+
+    <script src="script.js"></script>
+  </body>
 </html>

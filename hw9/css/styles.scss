@@ -1,10 +1,50 @@
 div {
-    width: 200px;
-    height: 200px;
-    background-color: rgb(134, 56, 69);
-    border: 1px solid rgba(240, 148, 204, 0.479);
-    color: white;
-    text-align: center;
-    padding: 20px;
-    border-radius: 30px;
+  width: 200px;
+  height: 200px;
+  background-color: rgb(134, 56, 69);
+  border: 1px solid rgba(240, 148, 204, 0.479);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 30px;
+}
+
+table {
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid rgb(226, 210, 226);
+}
+
+th {
+  cursor: pointer;
+  background-color: rgb(155, 44, 155);
+}
+
+th,
+td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f0b4d7;
+}
+
+#p {
+  background: rgba(230, 16, 158, 0.384);
+  height: 200px;
+  width: 300px;
+}
+#p.resizable {
+  background: rgba(255, 0, 200, 0.363);
+  position: relative;
+}
+#p .resizer {
+  width: 1px;
+  height: 1px;
+  background: rgba(99, 19, 202, 0.281);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: se-resize;
 }
