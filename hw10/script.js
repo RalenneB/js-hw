@@ -7,6 +7,7 @@ Use this endpoint https://docs.thecatapi.com/api-reference/breeds/breeds-search
 
  */
 
+// instead on triggering event on search btn, we trigger it on Enter too
 function onEnterPressed(event) {
   if (event.code == "Enter") {
     searchCats();
@@ -48,7 +49,7 @@ function getAndCreateCatImg(cat, catCards) {
       })
       .catch((error) => console.warn(error));
   } else {
-      //if there is no img in the api, use a generic one
+    //if there is no img in the api, use a generic one
     let newCardForImgOnly = document.createElement("img");
     newCardForImgOnly.classList.add("imgCardUndefined");
     newCardForImgOnly.setAttribute(
@@ -66,7 +67,6 @@ function createCatCards(cats, wrapper) {
     let catCardText = document.createElement("p");
     let catCardTraits = document.createElement("p");
     let catCardWiki = document.createElement("a");
-    // getAndCreateCatImg(cat, catCardDiv);
 
     catCardTitle.innerText = cat.name;
     catCardText.innerText = cat.description;
@@ -81,11 +81,19 @@ function createCatCards(cats, wrapper) {
     catCardDiv.appendChild(catCardText);
     catCardDiv.appendChild(catCardTraits);
     catCardDiv.appendChild(catCardWiki);
-    getAndCreateCatImg(cat, catCardDiv);
-    // catCardDiv.append(imgElem);
 
-    // catCardDiv.appendChild(imgUrl);
-    // append image (cats, catCardDiv);
+    //create inner button
+    let addFavCatBtn = document.createElement("button");
+    addFavCatBtn.classList.add("btn-fav");
+    addFavCatBtn.innerText = "Add to Favorite";
+    catCardTitle.appendChild(addFavCatBtn);
+    addFavCatBtn.onclick = addCatToFav(cat);
+
+    //add to fav
+    // let body = document.getElementById("body");
+    // let favContainer = document.createElement("div");
+
+    getAndCreateCatImg(cat, catCardDiv);
   }
 }
 
@@ -107,7 +115,7 @@ function createNoCatsMessage(wrapper, searchStr) {
   } else {
     currentNoCatCard = noCatCards[0];
   }
-  currentNoCatCard.innerText = `😫 No cat breed with '${searchStr}' name found. Please try again.`;
+  currentNoCatCard.innerText = `😫 No cat breed with '${searchStr}' name found. Please try other name.`;
 }
 
 function removeNoCatsMessage() {
@@ -121,5 +129,67 @@ function removeCatsImg() {
   let catsImg = document.getElementsByClassName("imgCard");
   while (catsImg[0]) {
     catsImg[0].remove();
+  }
+}
+
+function addCatToFav(cat) {
+    //some sort of closure; this is why we call it with cat as arg
+  return function () {
+    // Verify if fav-container exists
+    let cv = document.getElementsByClassName("fav-container");
+    let favList;
+    if (cv.length == 0) {
+      let favContainer = document.createElement("div");
+      let body = document.getElementById("body");
+      favContainer.classList.add("fav-container");
+      favTitle = document.createElement("h3");
+      favTitle.innerText = "Favourite Breeds";
+      favList = document.createElement("ol");
+      favList.classList.add("ol");
+      favContainer.appendChild(favTitle);
+      favContainer.appendChild(favList);
+      body.appendChild(favContainer);
+    }
+    favList = document.getElementsByClassName("ol")[0];
+    // if fav-container exists, append new list element to fav container list
+    // else create fav container and append new list element to fav container list
+    let alreadyExist = false;
+    for (elem of favList.children) {
+      if (elem.children[0].innerText === cat.name) {
+        alreadyExist = true;
+        break;
+      }
+    }
+
+    if (!alreadyExist) {
+      let favListItem = document.createElement("li");
+      favListItem.classList.add("li");
+      let favListSpan = document.createElement("span");
+      favListSpan.innerText = cat.name;
+      favListItem.appendChild(favListSpan);
+      favList.appendChild(favListItem);
+
+      let deleteFavBtn = document.createElement("button");
+      deleteFavBtn.classList.add("del-btn");
+      deleteFavBtn.innerText = "x";
+      favListItem.appendChild(deleteFavBtn);
+      deleteFavBtn.onclick = deleteFavCat;
+      //   deleteFavCat();
+    }
+  };
+}
+
+function deleteFavCat(event) {
+  let target = event.target;
+  while (target && target.tagName !== "OL") {
+    if (target.tagName === "LI") {
+      let parent = target.parentNode;
+      target.remove();
+      if (parent.children.length === 0) {
+        let container = document.getElementsByClassName("fav-container")[0];
+        container.remove();
+      }
+    }
+    target = target.parentNode;
   }
 }

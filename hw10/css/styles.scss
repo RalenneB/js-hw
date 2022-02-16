@@ -1,88 +1,158 @@
 * {
   box-sizing: border-box;
   margin: 0 auto;
-  font-family: 'Roboto Serif', sans-serif;
+  font-family: "Roboto Serif", sans-serif;
+}
+
+body {
+  background-color: rgba(238, 208, 208, 0.432);
+  display: flex;
+  align-items: flex-start;
 }
 
 .wrapper {
-  margin: 10px;
+  //   margin: 10px;
   display: flex;
   flex-direction: column;
+  height: 100%;
   min-width: 500px;
   min-height: 500px;
-  background-color: rgba(238, 208, 208, 0.432);
+  //   background-color: rgba(238, 208, 208, 0.432);
   text-align: center;
   padding: 20px;
   align-items: center;
 }
 
-p, h2, a {
-    padding: 1rem;
+p,
+h2,
+a {
+  padding: 1rem;
 }
-
-
 
 .catCard {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 75%;
-    max-width: 530px;
-    min-height: 10%;
-    background-color: snow;
-    text-align: center;
-    margin: 5%;
-    border-left: 2px inset rgba(255, 0, 221, 0.404);
-    border-radius: 10% 25% 10% 10%;
-    box-shadow: 12px 12px 2px 1px rgba(255, 0, 106, 0.137);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 75%;
+  max-width: 530px;
+  //   min-height: 10%;
+  background-color: snow;
+  text-align: center;
+  margin: 5%;
+  border-left: 2px inset rgba(255, 0, 221, 0.404);
+  border-radius: 10% 25% 10% 10%;
+  box-shadow: 12px 12px 2px 1px rgba(255, 0, 106, 0.137);
 }
 
-
 .btn {
-    display: flex;
-    align-items: center;
-    margin: 15px;
-    padding: 10px 20px;
-    background-color:salmon;
-    border-radius: 5px;
-    border: 2px solid rgb(218, 101, 88);
-    color: #fafafa;
-    cursor: pointer;
-    font-size: 18px;
+  display: flex;
+  align-items: center;
+  margin: 15px;
+  padding: 10px 20px;
+  background-color: salmon;
+  border-radius: 5px;
+  border: 2px solid rgb(218, 101, 88);
+  color: #fafafa;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn:hover {
+  background-color: rgb(196, 91, 79);
 }
 
 label {
-    display: block;
-    font: 20px 'Josefin Sans', sans-serif;
+  display: block;
+  font: 20px "Josefin Sans", sans-serif;
 }
 
 input,
 label {
-    margin: .4rem 0;
+  margin: 0.4rem 0;
 }
 
 #site-search {
-    background-color: snow;
-    border-radius: 10px;
-    border: 1px solid sandybrown;
-    font-size: 13px;
-    width: 150px;
-    height: 30px;
-    text-align: center;
-    align-items: center;
-    outline: none;
-    
+  background-color: snow;
+  border-radius: 10px;
+  border: 1px solid sandybrown;
+  font-size: 13px;
+  width: 150px;
+  height: 30px;
+  text-align: center;
+  align-items: center;
+  outline: none;
 }
 
 img {
-    width: 250px;
-    // margin: 10px;
-    margin-bottom: 10px;
+  width: 250px;
+  // margin: 10px;
+  margin-bottom: 10px;
 }
 
-.imgCard, .imgCardUndefined {
-    border-radius: 20%;
-    box-shadow: 10px 5px 20px rgba(58, 58, 77, 0.493);
+.imgCard,
+.imgCardUndefined {
+  border-radius: 20%;
+  box-shadow: 10px 5px 20px rgba(58, 58, 77, 0.493);
+}
 
+.fav-container {
+  position: fixed;
+  right: 0;
+  top: 30px; //this makes the fav card appear fixed
+  background-color: rgb(233, 66, 149);
+  padding: 34px;
+  margin: 26px;
+  color: white;
+  text-align: left;
+  font-size: 18px;
+  border-radius: 14px 184px 5px 24px;
+  box-shadow: inset -7px 5px 18px 3px #ebaf56c9, -1em 0 0.4em #80004582;
 
+  li {
+    padding: 5px;
+    // display: flex;
+    // flex-direction: row-reverse;
+    // align-items: center;
+    // justify-content: space-between;
+  }
+
+  h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    padding: 5px;
+  }
+}
+
+.btn-fav {
+  display: flex;
+  align-items: center;
+  margin: 15px;
+  padding: 10px 20px;
+  background-color: rgb(224, 197, 218);
+  border-radius: 5px;
+  border: 2px solid rgb(228, 201, 198);
+  color: #fafafa;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.btn-fav:hover {
+  background-color: rgb(223, 176, 213);
+}
+
+.del-btn {
+  //   display: flex;
+  //   align-items: center;
+  margin: 15px;
+  padding: 7px 10px;
+  background-color: red;
+  border-radius: 5px;
+  border: 2px solid rgb(223, 3, 3);
+  color: #fafafa;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.del-btn:hover {
+  color: rgb(143, 34, 34);
 }
