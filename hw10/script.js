@@ -87,7 +87,7 @@ function createCatCards(cats, wrapper) {
     addFavCatBtn.classList.add("btn-fav");
     addFavCatBtn.innerText = "Add to Favorite";
     catCardTitle.appendChild(addFavCatBtn);
-    addFavCatBtn.onclick = addCatToFav(cat);
+    addFavCatBtn.onclick = addCatToFav(cat.name);
 
     //add to fav
     // let body = document.getElementById("body");
@@ -132,8 +132,8 @@ function removeCatsImg() {
   }
 }
 
-function addCatToFav(cat) {
-    //some sort of closure; this is why we call it with cat as arg
+function addCatToFav(catName) {
+  //some sort of closure; this is why we call it with cat as arg
   return function () {
     // Verify if fav-container exists
     let cv = document.getElementsByClassName("fav-container");
@@ -155,7 +155,7 @@ function addCatToFav(cat) {
     // else create fav container and append new list element to fav container list
     let alreadyExist = false;
     for (elem of favList.children) {
-      if (elem.children[0].innerText === cat.name) {
+      if (elem.children[0].innerText === catName) {
         alreadyExist = true;
         break;
       }
@@ -165,7 +165,7 @@ function addCatToFav(cat) {
       let favListItem = document.createElement("li");
       favListItem.classList.add("li");
       let favListSpan = document.createElement("span");
-      favListSpan.innerText = cat.name;
+      favListSpan.innerText = catName;
       favListItem.appendChild(favListSpan);
       favList.appendChild(favListItem);
 
@@ -174,7 +174,7 @@ function addCatToFav(cat) {
       deleteFavBtn.innerText = "x";
       favListItem.appendChild(deleteFavBtn);
       deleteFavBtn.onclick = deleteFavCat;
-      //   deleteFavCat();
+      addCatToLocalStorage(catName)
     }
   };
 }
@@ -184,6 +184,8 @@ function deleteFavCat(event) {
   while (target && target.tagName !== "OL") {
     if (target.tagName === "LI") {
       let parent = target.parentNode;
+      const catName = target.children[0].innerText;
+      deleteCatFromLocalStorage(catName);
       target.remove();
       if (parent.children.length === 0) {
         let container = document.getElementsByClassName("fav-container")[0];
@@ -193,3 +195,40 @@ function deleteFavCat(event) {
     target = target.parentNode;
   }
 }
+//de apelat init smth funct aici!
+//
+
+function initCats() {} //to do!
+
+function addCatToLocalStorage(catName) {
+  let arr = [];
+  let localCats = localStorage.getItem("favCats");
+  let catExistInLocal = false;
+
+  if (localCats != null && localCats.length > 0) {
+    arr = JSON.parse(localCats);
+    for (const cat of arr) {
+      if (cat == catName) {
+        catExistInLocal = true;
+        break;
+      }
+    }
+
+    if (catExistInLocal == true) {
+      return;
+    }
+  }
+
+  arr.push(catName);
+  localStorage.setItem("favCats", JSON.stringify(arr));
+}
+
+function deleteCatFromLocalStorage(catName) {
+  let localCats = localStorage.getItem("favCats");
+  localCats = JSON.parse(localCats);
+  localCats = localCats.filter(cat => cat != catName);
+  localStorage.setItem("favCats", JSON.stringify(localCats));
+}
+
+// addCatToLocalStorage('dorymissy');
+// addCatToLocalStorage('elon');
