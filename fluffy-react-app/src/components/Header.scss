@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "AvenirNext";
+  color: #13253a;
+}
+
+@font-face {
+  font-family: "AvenirNext";
+  src: url("../fonts/AvenirNextLTPro-Regular.otf");
+}
+
+@font-face {
+  font-family: "AvenirNextBold";
+  src: url("../fonts/AvenirNextLTPro-Bold.otf");
+}
+
+// .Header {
+//   display: flex;
+// //   justify-content: space-between;
+//   align-items: center;
+//   padding: 42px 140px;
+//   position: sticky;
+//   top: 0;
+//   background-color: rgb(244, 246, 247);
+// }
+
+.header_container {
+//   max-width: 2000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 42px 140px;
+  position: sticky;
+  top: 0;
+  background-color: rgb(244, 246, 247);
+}
+
+@media screen and (max-width: 992px) {
+  .content_container {
+    flex-direction: column;
+
+    .img_container {
+      width: 50%;
+      flex-direction: column;
+
+      .img-block {
+        width: 25%;
+      }
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .header_container {
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    .header_list_container {
+      .header_list {
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 30px;
+      }
+    }
+  }
+}
+
+h1 {
+  font-size: 46px;
+  font-weight: 700;
+  line-height: 63px;
+  font-family: "AvenirNextBold";
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 27px;
+  padding-bottom: 32px;
+}
+
+.header_list {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  padding: 0;
+}
+
+.header_list-item {
+  display: inline-block;
+}
+
+.header_list-item a {
+  display: inline-block;
+  padding: 10px 25px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 12px;
+}
+
+a:hover {
+  background-color: rgb(221, 231, 236);
+}
+
+a:active {
+  background-color: rgb(143, 170, 228);
+}

@@ -1,0 +1,42 @@
+.Footer {
+//   flex-direction: column;
+  text-align: center;
+  background-color: #f4f6f7;
+  display: flex;
+  justify-content: center;
+}
+
+.banner_container-items {
+  //   padding: 60px 125px;
+  padding: 5% 10%;
+}
+
+.banner_container-items span {
+  color: #ff7f57;
+}
+h5 {
+  color: #2557ab;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 46px;
+  line-height: 63px;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 52px;
+  padding-bottom: 34px;
+}
+
+@media screen and (max-width: 600px) {
+  .Footer {
+    flex-direction: column;
+    text-align: center;
+  }
+}
